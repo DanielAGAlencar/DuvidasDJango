@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <ul>
+        {% for duvida in duvidas %}
+            <a href="{% url 'update_duvida' duvida.id %}">
+                <li> {{ duvida.descricao }} - {{duvida.nivel}} - {{ duvida.data }} -
+                    {{duvida.nome_aluno}} - {{duvida.nome_professor}} - {{duvida.tipo}} </li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <a class="btn btn-primary" href="{% url 'create_duvida' %}">Novo</a>
+{% endblock %}

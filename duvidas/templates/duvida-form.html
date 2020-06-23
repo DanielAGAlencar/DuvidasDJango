@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <form method="POST" novalidate>
+        {% csrf_token %}
+          <div class="form-group">
+            {{ form.descricao |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+              {{ form.nivel |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+            {{ form.data |as_crispy_field }}
+          </div>
+          <div class="form-group">
+              {{ form.nome_aluno |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+              {{ form.nome_professor |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+              {{ form.tipo |as_crispy_field  }}
+          </div>
+          <button type="submit" class="btn btn-success">Salvar</button>
+            {% if duvida %}
+                 <a href="{% url 'delete_duvida' duvida.id %}" class="btn btn-danger">Excluir</a>
+            {% endif %}
+          <a class="btn btn-light" href="{% url 'list_duvida' %}">Cancelar</a>
+      </form>
+{% endblock %}
